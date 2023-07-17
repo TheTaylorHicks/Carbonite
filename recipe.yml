@@ -11,7 +11,7 @@ base-image: ghcr.io/ublue-os/silverblue-main
 # builds with the tag (all uBlue images do this).
 fedora-version: 38
 # This description will be visible in the container metadata.
-description: A starting point for further customization of uBlue images. Make your own! https://ublue.it/making-your-own/
+description: A evolving immutable Linux image for cloud software development.
 # These scripts will be executed during the container build.
 # Place scripts in the "scripts/" dir and put the corresponding filenames here.
 # Any files that aren't listed here won't be executed automatically, which
@@ -40,8 +40,9 @@ rpm:
   # so that your repos automatically use your image's actual Fedora version,
   # which greatly simplifies future maintenance of your custom recipe.
   repos:
-  # Example (which also demonstrates version number expansion):
-  # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%FEDORA_VERSION%/atim-starship-fedora-%FEDORA_VERSION%.repo
+  - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%FEDORA_VERSION%/atim-starship-fedora-%FEDORA_VERSION%.repo
+  - https://download.docker.com/linux/fedora/docker-ce.repo
+  - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 
   # These RPMs will be installed from your enabled repositories (Fedora's own
   # repos, extra "repos" you've added, etc). The installation is automatically
@@ -55,9 +56,29 @@ rpm:
     # apps and binaries require it, so it's a good idea to always include it
     # if you ever download or compile any custom software on your machine.
     - libadwaita
-    # Add your own below:
-    # Example:
-    # - tilix
+    # Base packages
+    - epiphany
+    - libratbag-ratbagd
+    - tailscale
+    - wireguard-tools
+    # Development packages
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-buildx-plugin
+    - docker-compose-plugin
+    # Gnome Extension Packages
+    - gnome-shell-extension-appindicator
+    - gnome-shell-extension-blur-my-shell
+    - gnome-shell-extension-caffeine
+    - gnome-shell-extension-dash-to-dock
+    - gnome-shell-extension-just-perfection
+    - gnome-shell-extension-pop-shell
+    - gnome-shell-extension-user-theme
+    # FortiVPN Packages
+    - openfortivpn
+    - NetworkManager-fortisslvpn
+    - NetworkManager-fortisslvpn-gnome
   # These RPMs will be removed from the system image. This step happens during
   # image build, BEFORE installing custom RPMs (from the "rpm.install" category).
   remove:
@@ -78,5 +99,11 @@ firstboot:
   # the "just setup-flatpaks" command from our "custom.just" template file.
   # This is just an example selection:
   flatpaks:
-    - io.github.celluloid_player.Celluloid
-    - org.kde.krita
+    - com.discordapp.Discord
+    - com.slack.Slack
+    - com.spotify.Client
+    - com.teamspeak.TeamSpeak
+    - com.mattermost.Desktop
+    - org.gnome.Totem
+    - org.mozilla.Firefox
+    - org.remmina.Remmina
