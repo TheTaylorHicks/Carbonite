@@ -66,6 +66,7 @@ rpm:
     - docker-ce-cli
     - containerd.io
     - docker-buildx-plugin
+    - docker-compose # Deprecated, but some projects/tools still rely on it
     - docker-compose-plugin
     # Gnome Extension Packages
     - gnome-shell-extension-appindicator
@@ -76,9 +77,9 @@ rpm:
     - gnome-shell-extension-pop-shell
     - gnome-shell-extension-user-theme
     # FortiVPN Packages
-    - openfortivpn
     - NetworkManager-fortisslvpn
     - NetworkManager-fortisslvpn-gnome
+    - openfortivpn
   # These RPMs will be removed from the system image. This step happens during
   # image build, BEFORE installing custom RPMs (from the "rpm.install" category).
   remove:
@@ -100,10 +101,18 @@ firstboot:
   # This is just an example selection:
   flatpaks:
     - com.discordapp.Discord
+    - com.github.tchx84.Flatseal
+    - com.mattermost.Desktop
+    - com.mattjakeman.ExtensionManager
     - com.slack.Slack
     - com.spotify.Client
     - com.teamspeak.TeamSpeak
-    - com.mattermost.Desktop
+    - com.valvesoftware.Steam
+    - im.riot.Riot
+    - io.podman_desktop.PodmanDesktop
+    - org.gnome.Boxes
     - org.gnome.Totem
-    - org.mozilla.Firefox
+    - org.mozilla.Thunderbird
+    - org.mozilla.firefox
     - org.remmina.Remmina
+    - org.telegram.desktop
