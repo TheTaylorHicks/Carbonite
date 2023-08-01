@@ -69,13 +69,13 @@ rpm:
     - docker-compose # Deprecated, but some projects/tools still rely on it
     - docker-compose-plugin
     # Gnome Extension Packages
-    - gnome-shell-extension-appindicator
-    - gnome-shell-extension-blur-my-shell
-    # - gnome-shell-extension-caffeine
-    - gnome-shell-extension-dash-to-dock
-    - gnome-shell-extension-just-perfection
-    - gnome-shell-extension-pop-shell
-    - gnome-shell-extension-user-theme
+    # - gnome-shell-extension-appindicator
+    # - gnome-shell-extension-blur-my-shell
+    # # - gnome-shell-extension-caffeine
+    # - gnome-shell-extension-dash-to-dock
+    # - gnome-shell-extension-just-perfection
+    # - gnome-shell-extension-pop-shell
+    # - gnome-shell-extension-user-theme
     # FortiVPN Packages
     - NetworkManager-fortisslvpn
     - NetworkManager-fortisslvpn-gnome
